@@ -9,5 +9,3 @@ def geocode(address):
     parsed = json.loads(data)[0]
     return (parsed['display_name'], (parsed['lat'], parsed['lon']),)
 
-if __name__ == '__main__':
-    print geocode(19078)
