@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, render_template, flash, redirect, url_for
 from location.scoring import StumbleScore
 
@@ -18,4 +19,5 @@ def home():
         return render_template('results.html', **location())
 
 if __name__ == "__main__":
-	app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
