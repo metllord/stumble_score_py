@@ -9,7 +9,7 @@ class StumbleScore:
         self.location = geocode(address)
         self.params = dict(
             key = 'AIzaSyAehiOU6RPqcSc_sWh1e6gl8CSfOmi0EaM',
-            type = 'bar|liquor_store|night_club',
+            types = 'bar|liquor_store|night_club',
             location = '%s,%s' % self.location[1],
             radius = 2000,
             sensor = 'false')
@@ -21,7 +21,7 @@ class StumbleScore:
         self.parsed =  json.loads(data)
 
     def bar_count(self):
-        return len(self.parsed)
+        return len(self.parsed['results'])
 
     def score(self):
         return self.bar_count() * 5.0
@@ -35,4 +35,11 @@ class StumbleScore:
         else:
             return 'Dry'
 
+    def list_bars(self):
+        return [x['name'] for x in self.parsed['results']]
 
+    def __call__(self):
+        self.search()
+        results = dict(name=self.location[0], bar_count=self.bar_count(), score=self.score(), 
+                    category=self.category(), locations=self.list_bars())
+        return results
