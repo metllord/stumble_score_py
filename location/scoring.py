@@ -11,7 +11,7 @@ class StumbleScore:
             key = 'AIzaSyAehiOU6RPqcSc_sWh1e6gl8CSfOmi0EaM',
             types = 'bar|liquor_store|night_club',
             location = '%s,%s' % self.location[1],
-            radius = 2000,
+            radius = 3219,
             sensor = 'false')
         self.url = 'https://maps.googleapis.com/maps/api/place/search/json'
 
