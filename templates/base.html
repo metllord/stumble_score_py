@@ -2,19 +2,27 @@
 <html>
     <head>
         <title>StumbleScore (in Python)</title>
-        <link rel="stylesheet" type="text/css" src="{{ url_for('static', filename='style.css') }}">
+        <link href='http://fonts.googleapis.com/css?family=Mate+SC|Karla:400,700,400italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+        <script title="text/javascript" src="{{ url_for('static', filename='jquery-1.7.2.min.js') }}"></script>
+        <script title="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
     </head>
     <body>
         <h1>Stumble Score</h1>
+        <a href="https://github.com/metllord/stumble_score_py"><img id="github" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+        <div id="content">
+        {% for message in get_flashed_messages() %}
+            <div class="flash">{{ message }}</div>
+        {% endfor %}
         <form method="POST" action="{{ url_for('home') }}">
-            <p><label for="address">Enter an address: </label><input type="text" name="address"></p>
-            <p><input type="submit" value="Stumble"></p>
+            <p><label for="address">Enter an address: </label><input type="text" name="address"> >>
+                <input class="button" type="submit" value="Stumble"></p>
         </form>
         {% block content %}<p>StumbleScore generates a score and classification based on the number of places
-        to get booze in the place you entered above.</p>{% endblock %}
+        to get booze within 2km of the address entered above.</p>{% endblock %}
         <footer>
             <p>A project created for The Ruby Workshop, converted to Python.</p>
-            <p><a href="https://github.com/metllord/stumble_score_py">Fork me on GitHub</a></p>
         </footer>
+        </div>
     </body>
 </html>

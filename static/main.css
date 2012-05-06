@@ -1,0 +1,46 @@
+body {
+    background: #ABBD95;
+    font-family: 'Karla', sans-serif;
+}
+
+#github {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+}
+
+.flash {
+    text-align: center;
+    color: #921F19;
+    background: #9e982c;
+}
+h1 {
+    text-align: center;
+    font-family: 'Mate SC', serif;
+}
+
+form {
+    text-align: center;
+}
+
+form .button {
+
+}
+
+#results {
+    padding: 0;
+    color: #474532;
+    background: #9e982c;
+    border-top: 10px solid #876F1A;
+    border-bottom: 10px solid #876F1A;
+}
+
+#content {
+    padding-bottom:0;
+    background: #474532;
+    width:80%;
+    margin: auto;
+    color: #E3DFBC;
+    border: 10px solid #26251B;
+}
