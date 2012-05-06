@@ -1,9 +1,15 @@
-from flask import Flask
-app = Flask(__name_)
+from flask import Flask, request, render_template
+from location.scoring import StumbleScore
 
-@app.route("/")
+app = Flask(__name__)
+
+@app.route("/", methods=['GET', 'POST'])
 def home():
-	return "Welcome to StumbleScore"
+    if request.method=='GET':
+        return render_template('base.html')
+    else:
+        location = StumbleScore(request.form['address'])
+        return render_template('results.html', **location())
 
 if __name__ == "__main__":
-	app.run()
+	app.run(debug=True)

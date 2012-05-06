@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>StumbleScore (in Python)</title>
+        <link rel="stylesheet" type="text/css" src="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h1>Stumble Score</h1>
+        <form method="POST" action="{{ url_for('home') }}">
+            <p><label for="address">Enter an address: </label><input type="text" name="address"></p>
+            <p><input type="submit" value="Stumble"></p>
+        </form>
+        {% block content %}<p>StumbleScore generates a score and classification based on the number of places
+        to get booze in the place you entered above.</p>{% endblock %}
+        <footer>
+            <p>A project created for The Ruby Workshop, converted to Python.</p>
+            <p><a href="https://github.com/metllord/stumble_score_py">Fork me on GitHub</a></p>
+        </footer>
+    </body>
+</html>

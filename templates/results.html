@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="results">
+    <h2>StumbleScore for {{ name }}</h2>
+    <p>Number of places to get booze: {{ bar_count }}</p>
+    <p><em>StumbleScore</em>: {{ score }}</p>
+    <p>Category: {{ category }}</p>
+    <ul>
+        {% for place in locations %}
+        <li>{{ place }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
