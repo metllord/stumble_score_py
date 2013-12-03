@@ -12,10 +12,11 @@ def home():
         return render_template('base.html')
     else:
         place = request.form['address']
+        distance = request.form['distance']
         if not place:
             flash("You didn't enter an address. Have you been drinking?")
             return redirect(url_for('home'))
-        location = StumbleScore(place)
+        location = StumbleScore(place, distance)
         return render_template('results.html', **location())
 
 if __name__ == "__main__":

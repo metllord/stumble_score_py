@@ -5,13 +5,13 @@ import json
 requests.defaults.defaults['encode_uri'] = False
 
 class StumbleScore:
-    def __init__(self, address):
+    def __init__(self, address, distance=2):
         self.location = geocode(address)
         self.params = dict(
             key = 'AIzaSyAehiOU6RPqcSc_sWh1e6gl8CSfOmi0EaM',
             types = 'bar|liquor_store|night_club',
             location = '%s,%s' % self.location[1],
-            radius = 3219,
+            radius = int(distance) * 1609, # If passed as a argument, it might be a string.
             sensor = 'false')
         self.url = 'https://maps.googleapis.com/maps/api/place/search/json'
 
@@ -40,6 +40,6 @@ class StumbleScore:
 
     def __call__(self):
         self.search()
-        results = dict(name=self.location[0], bar_count=self.bar_count(), score=self.score(), 
+        results = dict(name=self.location[0], bar_count=self.bar_count(), score=self.score(),
                     category=self.category(), locations=self.list_bars())
         return results

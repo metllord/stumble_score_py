@@ -1,8 +1,8 @@
 from sys import argv
 from location.scoring import StumbleScore
 
-def cli(address):
-    location = StumbleScore(address)
+def cli(address, dist):
+    location = StumbleScore(address, dist)
     results = location()
     output = """
 Welcome to StumbleScore!
@@ -18,4 +18,5 @@ Locations:
     return output
 
 if __name__ == '__main__':
-    print cli(argv[1])
+    f, location, dist = argv
+    print cli(location, dist)
